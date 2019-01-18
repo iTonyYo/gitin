@@ -17,8 +17,8 @@
     "node": ">=10.13.0"
   },
   "files": [
-    "src/**/*",
-    "esm/**/*"
+    "src/**/*.js",
+    "esm/**/*.js"
   ],
   "dependencies": {
     "chalk": "^2.4.2",

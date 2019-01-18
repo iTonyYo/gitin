@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 
 var _meow = _interopRequireDefault(require("meow"));
@@ -14,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   try {
     const cli = (0, _meow.default)(`
       使用方式
-      $ gitin <位置> 选项 [...]
+        $ gitin <位置> 选项 [...]
 
       选项
         --force, -f, 强制重新初始化，注意：这会删除已有的 ".git" 目录
