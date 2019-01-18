@@ -18,7 +18,6 @@ const gitin = async (path, force) => {
     }
 
     const isGit = await isGitRepo();
-
     const isForce = isBoolean(force) && isEqual(force, true);
 
     if (isGit && !isForce) {
@@ -42,16 +41,14 @@ const gitin = async (path, force) => {
       };
     }
 
-    if (!isGit) {
-      await Repository.init(path, 0);
-      log('成功初始化 Git 项目');
+    await Repository.init(path, 0);
+    log('成功初始化 Git 项目');
 
-      return {
-        state: 'success',
-        message: '成功初始化 Git 项目',
-      };
-    }
-  } catch(err) {
+    return {
+      state: 'success',
+      message: '成功初始化 Git 项目',
+    };
+  } catch (err) {
     throw err.toString();
   }
 };

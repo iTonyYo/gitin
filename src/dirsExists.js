@@ -1,4 +1,5 @@
 import pMap from 'p-map';
+import isEqual from 'fast-deep-equal';
 
 import dirExists from './dirExists';
 import allSameWith from './allSameWith';
@@ -10,14 +11,12 @@ import allSameWith from './allSameWith';
  * @param {Array} dirs - 待检测的文件夹列表
  * @returns {Boolean}
  */
-const dirsExists = async (dirs) => (
+const dirsExists = async dirs => (
   allSameWith(
     await pMap(
       dirs,
-      async path => {
-        return await dirExists(path);
-      },
-      {concurrency: 4},
+      async path => !isEqual(await dirExists(path), false),
+      { concurrency: 4 },
     ),
 
     true,

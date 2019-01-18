@@ -124,7 +124,7 @@ yarn test
 - [X] 开发的时候使用 `ES 6/7`，支持构建 `ES 5` 模式的模块；
 - [ ] 功能测试；
 - [ ] 捆绑 [Git 倒钩][Git倒钩]；
-- [ ] ESlint 检测；
+- [X] ESlint 检测；
 - [X] 生成所有依赖的开源证书；
 - [X] 更新日志；
 - [ ] 谁在使用 [`@oopsunome/gitin`][@oopsunome/gitin]?

@@ -26,7 +26,7 @@ import gitin from './gitin';
         help: {
           type: 'boolean',
           alias: 'h',
-        }
+        },
       },
     });
 

@@ -22,6 +22,7 @@
  * - [X] 不需要系统安装 Git
  * - [X] 通过检查版本库默认结构来判断
  */
+import isEqual from 'fast-deep-equal';
 
 import resolveRoot from './resolveRoot';
 import filesExists from './filesExists';
@@ -48,10 +49,5 @@ export default async () => {
   const fe = filesExists(gitInitFile);
   const de = dirsExists(gitInitDir);
 
-  return (
-    await fe
-      && await de
-  )
-  ? true
-  : false;
+  return !isEqual((await fe && await de), false);
 };

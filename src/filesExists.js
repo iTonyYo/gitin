@@ -1,4 +1,5 @@
 import pMap from 'p-map';
+import isEqual from 'fast-deep-equal';
 
 import fileExists from './fileExists';
 import allSameWith from './allSameWith';
@@ -10,14 +11,12 @@ import allSameWith from './allSameWith';
  * @param {Array} files - 待检测的文件列表
  * @returns {Boolean}
  */
-const filesExists = async (files) => (
+const filesExists = async files => (
   allSameWith(
     await pMap(
       files,
-      async path => {
-        return await fileExists(path);
-      },
-      {concurrency: 4},
+      async path => !isEqual(await fileExists(path), false),
+      { concurrency: 4 },
     ),
 
     true,
