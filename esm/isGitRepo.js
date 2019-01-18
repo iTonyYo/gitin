@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _fastDeepEqual = _interopRequireDefault(require("fast-deep-equal"));
+
 var _resolveRoot = _interopRequireDefault(require("./resolveRoot"));
 
 var _filesExists = _interopRequireDefault(require("./filesExists"));
@@ -14,7 +16,6 @@ var _dirsExists = _interopRequireDefault(require("./dirsExists"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
- *
  * https://git.io/fhC0r，https://goo.gl/GU35Ee
  * https://goo.gl/hoxtVz，https://goo.gl/LjRm9c
  * 这些是检测当前项目是不是 Git 项目的方法，但都有个
@@ -37,13 +38,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * - [X] 不需要系统安装 Git
  * - [X] 通过检查版本库默认结构来判断
  */
-const gitInitFile = [(0, _resolveRoot.default)('.git/HEAD'), (0, _resolveRoot.default)('.git/config'), (0, _resolveRoot.default)('.git/description')];
-const gitInitDir = [(0, _resolveRoot.default)('.git/hooks'), (0, _resolveRoot.default)('.git/info'), (0, _resolveRoot.default)('.git/objects'), (0, _resolveRoot.default)('.git/objects/info'), (0, _resolveRoot.default)('.git/objects/pack'), (0, _resolveRoot.default)('.git/refs'), (0, _resolveRoot.default)('.git/refs/heads'), (0, _resolveRoot.default)('.git/refs/tags')];
-
-var _default = async () => {
+var _default = async path => {
+  const gitInitFile = [(0, _resolveRoot.default)('.git/HEAD', path), (0, _resolveRoot.default)('.git/config', path), (0, _resolveRoot.default)('.git/description', path)];
+  const gitInitDir = [(0, _resolveRoot.default)('.git/hooks', path), (0, _resolveRoot.default)('.git/info', path), (0, _resolveRoot.default)('.git/objects', path), (0, _resolveRoot.default)('.git/objects/info', path), (0, _resolveRoot.default)('.git/objects/pack', path), (0, _resolveRoot.default)('.git/refs', path), (0, _resolveRoot.default)('.git/refs/heads', path), (0, _resolveRoot.default)('.git/refs/tags', path)];
   const fe = (0, _filesExists.default)(gitInitFile);
   const de = (0, _dirsExists.default)(gitInitDir);
-  return (await fe) && (await de) ? true : false;
+  return !(0, _fastDeepEqual.default)((await fe) && (await de), false);
 };
 
 exports.default = _default;

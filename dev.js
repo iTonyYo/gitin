@@ -1,4 +1,4 @@
-import gitin from "./src/gitin";
+import gitin from './src/gitin';
 
 (async () => {
   await gitin('.');

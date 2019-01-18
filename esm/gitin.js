@@ -31,7 +31,7 @@ const gitin = async (path, force) => {
       throw Error('必须提供有效的初始化位置');
     }
 
-    const isGit = await (0, _isGitRepo.default)();
+    const isGit = await (0, _isGitRepo.default)(path);
     const isForce = (0, _isBoolean.default)(force) && (0, _fastDeepEqual.default)(force, true);
 
     if (isGit && !isForce) {
@@ -53,14 +53,12 @@ const gitin = async (path, force) => {
       };
     }
 
-    if (!isGit) {
-      await _nodegit.Repository.init(path, 0);
-      log('成功初始化 Git 项目');
-      return {
-        state: 'success',
-        message: '成功初始化 Git 项目'
-      };
-    }
+    await _nodegit.Repository.init(path, 0);
+    log('成功初始化 Git 项目');
+    return {
+      state: 'success',
+      message: '成功初始化 Git 项目'
+    };
   } catch (err) {
     throw err.toString();
   }

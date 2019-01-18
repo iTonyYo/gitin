@@ -17,7 +17,7 @@ const gitin = async (path, force) => {
       throw Error('必须提供有效的初始化位置');
     }
 
-    const isGit = await isGitRepo();
+    const isGit = await isGitRepo(path);
     const isForce = isBoolean(force) && isEqual(force, true);
 
     if (isGit && !isForce) {

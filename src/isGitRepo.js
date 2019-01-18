@@ -1,5 +1,4 @@
 /**
- *
  * https://git.io/fhC0r，https://goo.gl/GU35Ee
  * https://goo.gl/hoxtVz，https://goo.gl/LjRm9c
  * 这些是检测当前项目是不是 Git 项目的方法，但都有个
@@ -28,24 +27,24 @@ import resolveRoot from './resolveRoot';
 import filesExists from './filesExists';
 import dirsExists from './dirsExists';
 
-const gitInitFile = [
-  resolveRoot('.git/HEAD'),
-  resolveRoot('.git/config'),
-  resolveRoot('.git/description'),
-];
+export default async (path) => {
+  const gitInitFile = [
+    resolveRoot('.git/HEAD', path),
+    resolveRoot('.git/config', path),
+    resolveRoot('.git/description', path),
+  ];
 
-const gitInitDir = [
-  resolveRoot('.git/hooks'),
-  resolveRoot('.git/info'),
-  resolveRoot('.git/objects'),
-  resolveRoot('.git/objects/info'),
-  resolveRoot('.git/objects/pack'),
-  resolveRoot('.git/refs'),
-  resolveRoot('.git/refs/heads'),
-  resolveRoot('.git/refs/tags'),
-];
+  const gitInitDir = [
+    resolveRoot('.git/hooks', path),
+    resolveRoot('.git/info', path),
+    resolveRoot('.git/objects', path),
+    resolveRoot('.git/objects/info', path),
+    resolveRoot('.git/objects/pack', path),
+    resolveRoot('.git/refs', path),
+    resolveRoot('.git/refs/heads', path),
+    resolveRoot('.git/refs/tags', path),
+  ];
 
-export default async () => {
   const fe = filesExists(gitInitFile);
   const de = dirsExists(gitInitDir);
 
