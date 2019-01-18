@@ -15,7 +15,7 @@ var _trash = _interopRequireDefault(require("trash"));
 
 var _isBoolean = _interopRequireDefault(require("lodash/isBoolean"));
 
-var _isEqual = _interopRequireDefault(require("lodash/isEqual"));
+var _fastDeepEqual = _interopRequireDefault(require("fast-deep-equal"));
 
 var _isGitRepo = _interopRequireDefault(require("./isGitRepo"));
 
@@ -32,7 +32,7 @@ const gitin = async (path, force) => {
     }
 
     const isGit = await (0, _isGitRepo.default)();
-    const isForce = (0, _isBoolean.default)(force) && (0, _isEqual.default)(force, true);
+    const isForce = (0, _isBoolean.default)(force) && (0, _fastDeepEqual.default)(force, true);
 
     if (isGit && !isForce) {
       log('当前项目已经是 Git 项目');

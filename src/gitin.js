@@ -4,7 +4,7 @@ import { Repository } from 'nodegit';
 import debug from 'debug';
 import trash from 'trash';
 import isBoolean from 'lodash/isBoolean';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'fast-deep-equal';
 
 import isGitRepo from './isGitRepo';
 import dirExists from './dirExists';
