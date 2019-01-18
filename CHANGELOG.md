@@ -1,5 +1,13 @@
 # [`@oopsunome/manual-sort`](https://github.com/iTonyYo/manual-sort) 更新日志
 
+## [v1.0.2](https://github.com/iTonyYo/gitin/compare/v1.0.1...v1.0.2) - 2019-01-18
+
+#### 提交
+
+- [[`de9588f`](https://github.com/iTonyYo/gitin/commit/de9588fd073767751add6e3b237bab5668b20d2f)] 工程: :clapper: 增加 ESlint 检测
+- [[`022ab80`](https://github.com/iTonyYo/gitin/commit/022ab800146784fff11d5f5f8e29e353a304fbd1)] 变更: :m: `isGitRepo()` 方法应该注入初始化位置的路径
+- [[`f5b1c7b`](https://github.com/iTonyYo/gitin/commit/f5b1c7b8f06bc5ead7d48d671675aa34976b677d)] 性能: :racehorse: 使用 `fast-deep-equal` 替代 `lodash/isEqual`
+- [[`ca373b6`](https://github.com/iTonyYo/gitin/commit/ca373b6da78cf6d73da7c04546040002557f7a02)] 文档: :memo: 更新 README.md
 ## [v1.0.1](https://github.com/iTonyYo/gitin/compare/v1.0.0...v1.0.1) - 2019-01-18
 
 #### 提交
