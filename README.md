@@ -126,7 +126,7 @@ yarn test
 - [ ] 捆绑 [Git 倒钩][Git倒钩]；
 - [ ] ESlint 检测；
 - [X] 生成所有依赖的开源证书；
-- [ ] 更新日志；
+- [X] 更新日志；
 - [ ] 谁在使用 [`@oopsunome/gitin`][@oopsunome/gitin]?
 - [ ] 编写 [发布流程指南][发布流程指南]；
 - [ ] 编写 [Git 指南][Git指南]；
