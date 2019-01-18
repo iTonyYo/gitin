@@ -31,7 +31,7 @@
   },
   "description": "初始化 Git 项目。",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": {
     "name": "iyowei",
     "email": "swzyocowboy@icloud.com",
