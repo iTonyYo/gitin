@@ -74,7 +74,7 @@
 "@babel/types@7.4.0","MIT","https://github.com/babel/babel/tree/master/packages/babel-types"
 "@mrmlnc/readdir-enhanced@2.2.1","MIT","https://github.com/bigstickcarpet/readdir-enhanced"
 "@nodelib/fs.stat@1.1.3","MIT","https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.stat"
-"@oopsunome/gitin@1.0.2","MIT","https://github.com/iTonyYo/gitin"
+"@oopsunome/gitin@1.0.3","MIT","https://github.com/iTonyYo/gitin"
 "@samverschueren/stream-to-observable@0.3.0","MIT","https://github.com/SamVerschueren/stream-to-observable"
 "abbrev@1.1.1","ISC","https://github.com/isaacs/abbrev-js"
 "acorn-jsx@5.0.1","MIT","https://github.com/RReverser/acorn-jsx"
