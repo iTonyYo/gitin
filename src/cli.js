@@ -14,6 +14,7 @@ import gitin from './gitin';
 
       选项
         --force, -f, 强制重新初始化，注意：这会删除已有的 ".git" 目录
+        --version, -V, 查看版本号
 
       示例
         $ gitin .
@@ -26,6 +27,10 @@ import gitin from './gitin';
         help: {
           type: 'boolean',
           alias: 'h',
+        },
+        version: {
+          type: 'boolean',
+          alias: 'V',
         },
       },
     });
