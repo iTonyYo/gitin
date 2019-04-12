@@ -51,7 +51,7 @@ import gitin from '@oopsunome/gitin';
 
   /**
    * inited:
-   * 
+   *
    * {
    *   state: 'success',
    *   message: '成功初始化 Git 项目'
@@ -91,24 +91,24 @@ $ yarn global add @oopsunome/gitin
 
 **安装依赖**
 
-[`@oopsunome/gitin`][@oopsunome/gitin] 使用 [`Yarn`](https://yarnpkg.com/zh-Hans/) 包管理器，执行 `yarn install` 安装依赖。
+[`@oopsunome/gitin`][@oopsunome/gitin] 使用 [`npm`](https://www.npmjs.com/) 包管理器，执行 `npm i` 安装依赖。
 
 **运行**
 
 ```shell
-yarn start
+npm start
 ```
 
 **生产构建**
 
 ```shell
-yarn build
+npm build
 ```
 
 **测试**
 
 ```shell
-yarn test
+npm test
 ```
 
 ## 贡献指南
