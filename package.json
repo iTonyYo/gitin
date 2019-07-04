@@ -12,7 +12,9 @@
     "license": "npx babel-node ./scripts/license",
     "reprepare": "npx babel-node ./scripts/re-prepare",
     "changelog": "npx auto-changelog -p",
-    "lint": "npx eslint --cache ./src/**/*.js"
+    "lint": "npx eslint --cache ./src/**/*.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "engines": {
     "node": ">=10.13.0"
@@ -30,7 +32,8 @@
     "nodegit": "^0.24.1",
     "p-map": "^2.1.0",
     "trash": "^5.2.0",
-    "update-notifier": "^2.5.0"
+    "update-notifier": "^2.5.0",
+    "snyk": "^1.189.0"
   },
   "description": "初始化 Git 项目。",
   "private": false,
@@ -79,5 +82,6 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "snyk": true
 }
