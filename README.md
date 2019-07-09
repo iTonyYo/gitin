@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/c0ae01504ec1e82bd958/maintainability)](https://codeclimate.com/github/iTonyYo/gitin/maintainability)
+
 # `@oopsunome/gitin`
 
 初始化 Git 项目。
