@@ -5,14 +5,13 @@
   },
   "main": "esm/gitin.js",
   "scripts": {
-    "start": "DEBUG=GITIN:* npx babel-node ./dev",
-    "cli": "npx babel-node ./src/cli .",
+    "cli": "yarn build > /dev/null && DEBUG=GITIN:* npx babel-node ./src/cli .",
     "build": "npx babel-node ./scripts/clean-built && npx babel-node ./scripts/build",
     "clean": "npx babel-node ./scripts/clean",
     "license": "npx babel-node ./scripts/license",
     "reprepare": "npx babel-node ./scripts/re-prepare",
     "changelog": "npx auto-changelog -p",
-    "lint": "npx eslint --cache ./src/**/*.js"
+    "lint": "npx eslint --cache ."
   },
   "engines": {
     "node": ">=10.13.0"
@@ -20,6 +19,73 @@
   "files": [
     "src/**/*.js",
     "esm/**/*.js"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "10.13.0"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "add-module-exports"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "extends": [
+      "airbnb-base"
+    ],
+    "parser": "babel-eslint",
+    "rules": {
+      "no-console": 0
+    }
+  },
+  "eslintIgnore": [
+    "benchmark/**",
+    "docs/**",
+    "*-test.js",
+    "esm/**",
+    "build/**",
+    "lib/**",
+    ".github/**",
+    ".gitlab/**",
+    ".vscode/**",
+    "scripts/**",
+    "test/**"
+  ],
+  "auto-changelog": {
+    "output": "CHANGELOG.md",
+    "template": "changelog-template.hbs",
+    "unreleased": true,
+    "commitLimit": false,
+    "includeBranch": [
+      "master"
+    ]
+  },
+  "git": {
+    "core.editor": "code"
+  },
+  "gitignore": [
+    "macOS",
+    "Windows",
+    "Linux",
+    "Node",
+    "VisualStudioCode",
+    "SublimeText",
+    "CVS",
+    "Diff",
+    "Vim",
+    "TortoiseGit",
+    "Diff",
+    "Patch"
   ],
   "dependencies": {
     "chalk": "^2.4.2",
