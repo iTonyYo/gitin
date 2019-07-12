@@ -138,9 +138,11 @@
     "eslint-plugin-import": "^2.18.0",
     "execa": "^2.0.3",
     "fast-glob": "^3.0.4",
+    "gradient-string": "^1.2.0",
     "license-checker": "^25.0.1",
     "listr": "^0.14.3",
-    "make-dir": "^3.0.0"
+    "make-dir": "^3.0.0",
+    "tokei-js": "^1.0.3"
   },
   "license": "MIT",
   "publishConfig": {
