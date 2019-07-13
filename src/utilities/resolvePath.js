@@ -1,9 +1,9 @@
 import { realpathSync } from 'fs';
 import { resolve } from 'path';
 
-const resolveRoot = (relativePath, base) => resolve(
+const resolvePath = (relativePath, base) => resolve(
   realpathSync(base),
   relativePath,
 );
 
-export default resolveRoot;
+export default resolvePath;

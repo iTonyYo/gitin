@@ -2,7 +2,7 @@
 
 # `@oopsunome/gitin`
 
-初始化 Git 项目。
+初始化 Git 仓库。
 
 ## 目录
 
@@ -17,14 +17,12 @@
 - `mark` {String} 初始化位置
 - `force` {Boolean} 强制重新初始化, **注意:** 这会删除已有的 `.git` 目录
 - 返回: {Object}
-  - `state` {String} 初始化状态, `already` 表示当前项目已经是 Git 项目, `success` 表示初始化成功
+  - `state` {String} 初始化状态, `already` 表示当前项目已经是 Git 仓库, `success` 表示初始化成功
   - `message` {String} 初始化结果陈述
 
 #### 功能
 
-:heavy_check_mark: 从空文件夹内初始化 Git 项目
-
-:heavy_check_mark: 持辨别是否已经是 Git 项目
+:heavy_check_mark: 持辨别是否已经是 Git 仓库
 
 :heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git
 
@@ -52,7 +50,7 @@ import gitin from '@oopsunome/gitin';
    *
    * {
    *   state: 'success',
-   *   message: '成功初始化 Git 项目'
+   *   message: '成功初始化 Git 仓库'
    * }
    */
 })();
@@ -60,11 +58,11 @@ import gitin from '@oopsunome/gitin';
 
 ## 命令行
 
-:heavy_check_mark: 从空文件夹内初始化 Git 项目
+:heavy_check_mark: 支持从当前以及指定目录初始化 Git 仓库
 
-:heavy_check_mark: 持辨别是否已经是 Git 项目
+:heavy_check_mark: 持辨别是否已经是 Git 仓库
 
-:heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git
+:heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git 仓库
 
 #### 安装
 
@@ -81,14 +79,17 @@ $ yarn global add @oopsunome/gitin
 #### 使用
 
 ```
-$ 使用方式
-    gitin <位置> 选项 [...]
+使用方式
+  $ gitin <位置> 选项 [...]
 
-  选项
-    --force, -f, 强制重新初始化，注意：这会删除已有的 ".git" 目录
+选项
+  --force, -f,           强制重新初始化，注：这会删除已有的 ".git" 目录
+  --version, -V,         查看版本号
 
-  示例
-    $ gitin .
+示例
+  $ gitin                将当前文件夹初始化为 Git 仓库
+  $ gitin /usr/project   指定文件夹并将其初始化为 Git 仓库
+  $ gitin -f             强制重新初始化当前所在 Git 仓库
 ```
 
 ## 参与开发

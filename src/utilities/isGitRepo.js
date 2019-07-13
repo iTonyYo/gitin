@@ -23,26 +23,26 @@
  */
 import isEqual from 'fast-deep-equal';
 
-import resolveRoot from './resolveRoot';
+import resolvePath from './resolvePath';
 import filesExists from './filesExists';
 import dirsExists from './dirsExists';
 
 export default async (path) => {
   const gitInitFile = [
-    resolveRoot('.git/HEAD', path),
-    resolveRoot('.git/config', path),
-    resolveRoot('.git/description', path),
+    resolvePath('.git/HEAD', path),
+    resolvePath('.git/config', path),
+    resolvePath('.git/description', path),
   ];
 
   const gitInitDir = [
-    resolveRoot('.git/hooks', path),
-    resolveRoot('.git/info', path),
-    resolveRoot('.git/objects', path),
-    resolveRoot('.git/objects/info', path),
-    resolveRoot('.git/objects/pack', path),
-    resolveRoot('.git/refs', path),
-    resolveRoot('.git/refs/heads', path),
-    resolveRoot('.git/refs/tags', path),
+    resolvePath('.git/hooks', path),
+    resolvePath('.git/info', path),
+    resolvePath('.git/objects', path),
+    resolvePath('.git/objects/info', path),
+    resolvePath('.git/objects/pack', path),
+    resolvePath('.git/refs', path),
+    resolvePath('.git/refs/heads', path),
+    resolvePath('.git/refs/tags', path),
   ];
 
   const fe = filesExists(gitInitFile);

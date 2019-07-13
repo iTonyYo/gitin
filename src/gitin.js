@@ -1,19 +1,19 @@
 import { join } from 'path';
 
 import { Repository } from 'nodegit';
-import debug from 'debug';
 import trash from 'trash';
 import isBoolean from 'lodash/isBoolean';
 import isEqual from 'fast-deep-equal';
+import debug from 'debug';
 
-import isGitRepo from './isGitRepo';
-import dirExists from './dirExists';
+import isGitRepo from './utilities/isGitRepo';
+import dirExistsSync from './utilities/dirExistsSync';
 
-const log = debug('GITIN:log');
+const log = debug('GITIN:gitin');
 
 const gitin = async (path, force) => {
   try {
-    if (!(await dirExists(path))) {
+    if (!dirExistsSync(path)) {
       throw Error('必须提供有效的初始化位置');
     }
 
@@ -21,10 +21,10 @@ const gitin = async (path, force) => {
     const isForce = isBoolean(force) && isEqual(force, true);
 
     if (isGit && !isForce) {
-      log('当前项目已经是 Git 项目');
+      log(`\`${path}\` 项目已经是 Git 项目`);
       return {
         state: 'already',
-        message: '当前项目已经是 Git 项目',
+        message: `\`${path}\` 项目已经是 Git 项目！`,
       };
     }
 
@@ -37,7 +37,7 @@ const gitin = async (path, force) => {
 
       return {
         state: 'success',
-        message: '成功强制重新初始化 Git 项目',
+        message: '成功强制重新初始化 Git 项目！',
       };
     }
 
@@ -46,10 +46,10 @@ const gitin = async (path, force) => {
 
     return {
       state: 'success',
-      message: '成功初始化 Git 项目',
+      message: '成功初始化 Git 项目！',
     };
   } catch (err) {
-    throw err.toString();
+    throw err;
   }
 };
 

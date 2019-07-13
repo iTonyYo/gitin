@@ -9,8 +9,8 @@ var _fs = require("fs");
 
 var _path = require("path");
 
-const resolveRoot = (relativePath, base) => (0, _path.resolve)((0, _fs.realpathSync)(base), relativePath);
+const resolvePath = (relativePath, base) => (0, _path.resolve)((0, _fs.realpathSync)(base), relativePath);
 
-var _default = resolveRoot;
+var _default = resolvePath;
 exports.default = _default;
 module.exports = exports.default;

@@ -1,5 +1,9 @@
-#!/usr/bin/env node
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
 var _meow = _interopRequireDefault(require("meow"));
 
@@ -7,22 +11,35 @@ var _updateNotifier = _interopRequireDefault(require("update-notifier"));
 
 var _chalk = _interopRequireDefault(require("chalk"));
 
+var _gradientString = _interopRequireDefault(require("gradient-string"));
+
+var _debug = _interopRequireDefault(require("debug"));
+
+var _package = _interopRequireDefault(require("../package.json"));
+
 var _gitin = _interopRequireDefault(require("./gitin"));
+
+var _getWorkingDirectory = _interopRequireDefault(require("./utilities/getWorkingDirectory"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(async () => {
-  try {
-    const cli = (0, _meow.default)(`
+class Cli {
+  constructor() {
+    (0, _updateNotifier.default)({
+      pkg: _package.default
+    }).notify();
+    this.cli = (0, _meow.default)(`
       使用方式
         $ gitin <位置> 选项 [...]
 
       选项
-        --force, -f, 强制重新初始化，注意：这会删除已有的 ".git" 目录
-        --version, -V, 查看版本号
+        --force, -f,           强制重新初始化，注意：这会删除已有的 ".git" 目录
+        --version, -V,         查看版本号
 
       示例
-        $ gitin .
+        $ gitin                将当前文件夹初始化为 Git 仓库
+        $ gitin /usr/project   指定文件夹并将其初始化为 Git 仓库
+        $ gitin -f             强制重新初始化当前所在 Git 仓库
     `, {
       flags: {
         force: {
@@ -39,30 +56,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
         }
       }
     });
-    const {
-      input,
-      flags
-    } = cli;
-    const {
-      force
-    } = flags;
-    (0, _updateNotifier.default)({
-      pkg: cli.pkg
-    }).notify();
-
-    if (input.length === 0) {
-      throw Error('必须提供初始化位置');
-    }
-
-    if (input.length > 1) {
-      throw Error('暂时不支持批量初始化');
-    }
-
-    const rslt = await (0, _gitin.default)(input[0], force);
-    console.log(`
-     ${_chalk.default.greenBright(rslt.message)}
-    `);
-  } catch (err) {
-    throw err;
+    this.flags = this.cli.flags;
+    this.workingPath = (0, _getWorkingDirectory.default)(this.cli.input[0]).twd;
+    this.log = (0, _debug.default)('GITIN:cli');
   }
-})();
+
+  async run() {
+    this.hint((await (0, _gitin.default)(this.workingPath, this.flags.force)));
+  }
+
+  hint(rslt) {
+    const stdout = [];
+    stdout.push(_chalk.default`\n{bold ${_gradientString.default.rainbow(rslt.message)}} \n`);
+
+    if (this.cli.input.length > 1) {
+      stdout.push(_chalk.default`{yellow 警告：\n暂时不支持批量操作。}\n`);
+    }
+
+    console.log(stdout.join('\n'));
+  }
+
+}
+
+var _default = Cli;
+exports.default = _default;
+module.exports = exports.default;

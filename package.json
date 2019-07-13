@@ -1,11 +1,11 @@
 {
   "name": "@oopsunome/gitin",
   "bin": {
-    "gitin": "esm/cli.js"
+    "gitin": "esm/main.js"
   },
   "main": "esm/gitin.js",
   "scripts": {
-    "cli": "yarn build > /dev/null && DEBUG=GITIN:* npx babel-node ./src/cli .",
+    "cli": "yarn build > /dev/null && DEBUG=GITIN:cli ./esm/main.js .",
     "build": "npx babel-node ./scripts/clean-built && npx babel-node ./scripts/build",
     "clean": "npx babel-node ./scripts/clean",
     "license": "npx babel-node ./scripts/license",
@@ -91,6 +91,7 @@
     "chalk": "^2.4.2",
     "debug": "^4.1.1",
     "fast-deep-equal": "^2.0.1",
+    "gradient-string": "^1.2.0",
     "lodash": "^4.17.14",
     "meow": "^5.0.0",
     "nodegit": "^0.24.3",
@@ -138,7 +139,6 @@
     "eslint-plugin-import": "^2.18.0",
     "execa": "^2.0.3",
     "fast-glob": "^3.0.4",
-    "gradient-string": "^1.2.0",
     "license-checker": "^25.0.1",
     "listr": "^0.14.3",
     "make-dir": "^3.0.0",

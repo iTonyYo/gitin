@@ -1,23 +1,30 @@
-#!/usr/bin/env node
-
 import meow from 'meow';
 import updateNotifier from 'update-notifier';
 import chalk from 'chalk';
+import gradient from 'gradient-string';
+import debug from 'debug';
+
+import pkg from '../package.json';
 
 import gitin from './gitin';
+import getWorkingDirectory from './utilities/getWorkingDirectory';
 
-(async () => {
-  try {
-    const cli = meow(`
+class Cli {
+  constructor() {
+    updateNotifier({ pkg }).notify();
+
+    this.cli = meow(`
       使用方式
         $ gitin <位置> 选项 [...]
 
       选项
-        --force, -f, 强制重新初始化，注意：这会删除已有的 ".git" 目录
-        --version, -V, 查看版本号
+        --force, -f,           强制重新初始化，注意：这会删除已有的 ".git" 目录
+        --version, -V,         查看版本号
 
       示例
-        $ gitin .
+        $ gitin                将当前文件夹初始化为 Git 仓库
+        $ gitin /usr/project   指定文件夹并将其初始化为 Git 仓库
+        $ gitin -f             强制重新初始化当前所在 Git 仓库
     `, {
       flags: {
         force: {
@@ -35,25 +42,30 @@ import gitin from './gitin';
       },
     });
 
-    const { input, flags } = cli;
-    const { force } = flags;
-
-    updateNotifier({ pkg: cli.pkg }).notify();
-
-    if (input.length === 0) {
-      throw Error('必须提供初始化位置');
-    }
-
-    if (input.length > 1) {
-      throw Error('暂时不支持批量初始化');
-    }
-
-    const rslt = await gitin(input[0], force);
-
-    console.log(`
-     ${chalk.greenBright(rslt.message)}
-    `);
-  } catch (err) {
-    throw err;
+    this.flags = this.cli.flags;
+    this.workingPath = getWorkingDirectory(this.cli.input[0]).twd;
+    this.log = debug('GITIN:cli');
   }
-})();
+
+  async run() {
+    this.hint(
+      await gitin(this.workingPath, this.flags.force),
+    );
+  }
+
+  hint(rslt) {
+    const stdout = [];
+
+    stdout.push(
+      (chalk`\n{bold ${gradient.rainbow(rslt.message)}} \n`),
+    );
+
+    if (this.cli.input.length > 1) {
+      stdout.push(chalk`{yellow 警告：\n暂时不支持批量操作。}\n`);
+    }
+
+    console.log(stdout.join('\n'));
+  }
+}
+
+export default Cli;
