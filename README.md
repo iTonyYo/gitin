@@ -26,6 +26,8 @@
 
 :heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git
 
+:heavy_check_mark: 支持创建建不存在的目标目录并将其初始化为 Git 仓库
+
 #### 安装
 
 ```shell
@@ -63,6 +65,8 @@ import gitin from '@oopsunome/gitin';
 :heavy_check_mark: 持辨别是否已经是 Git 仓库
 
 :heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git 仓库
+
+:heavy_check_mark: 支持创建建不存在的目标目录并将其初始化为 Git 仓库
 
 #### 安装
 
