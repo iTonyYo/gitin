@@ -4,6 +4,8 @@ import { Repository } from 'nodegit';
 import trash from 'trash';
 import isBoolean from 'lodash/isBoolean';
 import isEqual from 'fast-deep-equal';
+import merge from 'deepmerge';
+import mkdir from 'make-dir';
 import debug from 'debug';
 
 import isGitRepo from './utilities/isGitRepo';
@@ -11,9 +13,18 @@ import dirExistsSync from './utilities/dirExistsSync';
 
 const log = debug('GITIN:gitin');
 
-const gitin = async (path, force) => {
+const gitin = async (path, options) => {
   try {
-    if (!dirExistsSync(path)) {
+    const { force, newDir } = merge({
+      force: false,
+      newDir: false,
+    }, options);
+
+    if (!dirExistsSync(path) && newDir) {
+      await mkdir(path);
+    }
+
+    if (!dirExistsSync(path) && !newDir) {
       throw Error('必须提供有效的初始化位置');
     }
 
@@ -42,11 +53,11 @@ const gitin = async (path, force) => {
     }
 
     await Repository.init(path, 0);
-    log('成功初始化 Git 项目');
+    log(`成功初始化 Git 项目 \`${path}\``);
 
     return {
       state: 'success',
-      message: '成功初始化 Git 项目！',
+      message: `成功初始化 Git 项目 \`${path}\`！`,
     };
   } catch (err) {
     throw err;

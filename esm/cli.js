@@ -33,6 +33,7 @@ class Cli {
         $ gitin <位置> 选项 [...]
 
       选项
+        --new, -n,             新建不存在的目标目录
         --force, -f,           强制重新初始化，注意：这会删除已有的 ".git" 目录
         --version, -V,         查看版本号
 
@@ -42,6 +43,10 @@ class Cli {
         $ gitin -f             强制重新初始化当前所在 Git 仓库
     `, {
       flags: {
+        new: {
+          type: 'boolean',
+          alias: 'n'
+        },
         force: {
           type: 'boolean',
           alias: 'f'
@@ -62,7 +67,10 @@ class Cli {
   }
 
   async run() {
-    this.hint((await (0, _gitin.default)(this.workingPath, this.flags.force)));
+    this.hint((await (0, _gitin.default)(this.workingPath, {
+      force: this.flags.force,
+      newDir: this.flags.new
+    })));
   }
 
   hint(rslt) {

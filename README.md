@@ -83,13 +83,15 @@ $ yarn global add @oopsunome/gitin
   $ gitin <位置> 选项 [...]
 
 选项
-  --force, -f,           强制重新初始化，注：这会删除已有的 ".git" 目录
+  --new, -n,             新建不存在的目标目录
+  --force, -f,           强制重新初始化，注意：这会删除已有的 ".git" 目录
   --version, -V,         查看版本号
 
 示例
   $ gitin                将当前文件夹初始化为 Git 仓库
   $ gitin /usr/project   指定文件夹并将其初始化为 Git 仓库
   $ gitin -f             强制重新初始化当前所在 Git 仓库
+  $ gitin /usr/pro -n    新建 `/usr/pro` 目录并将其初始化为 Git 仓库
 ```
 
 ## 参与开发

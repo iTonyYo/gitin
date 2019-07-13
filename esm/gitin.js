@@ -15,6 +15,10 @@ var _isBoolean = _interopRequireDefault(require("lodash/isBoolean"));
 
 var _fastDeepEqual = _interopRequireDefault(require("fast-deep-equal"));
 
+var _deepmerge = _interopRequireDefault(require("deepmerge"));
+
+var _makeDir = _interopRequireDefault(require("make-dir"));
+
 var _debug = _interopRequireDefault(require("debug"));
 
 var _isGitRepo = _interopRequireDefault(require("./utilities/isGitRepo"));
@@ -25,9 +29,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const log = (0, _debug.default)('GITIN:gitin');
 
-const gitin = async (path, force) => {
+const gitin = async (path, options) => {
   try {
-    if (!(0, _dirExistsSync.default)(path)) {
+    const {
+      force,
+      newDir
+    } = (0, _deepmerge.default)({
+      force: false,
+      newDir: false
+    }, options);
+
+    if (!(0, _dirExistsSync.default)(path) && newDir) {
+      await (0, _makeDir.default)(path);
+    }
+
+    if (!(0, _dirExistsSync.default)(path) && !newDir) {
       throw Error('必须提供有效的初始化位置');
     }
 
@@ -54,10 +70,10 @@ const gitin = async (path, force) => {
     }
 
     await _nodegit.Repository.init(path, 0);
-    log('成功初始化 Git 项目');
+    log(`成功初始化 Git 项目 \`${path}\``);
     return {
       state: 'success',
-      message: '成功初始化 Git 项目！'
+      message: `成功初始化 Git 项目 \`${path}\`！`
     };
   } catch (err) {
     throw err;
