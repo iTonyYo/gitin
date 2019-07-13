@@ -1,10 +1,16 @@
 # [`@oopsunome/manual-sort`](https://github.com/iTonyYo/manual-sort) 更新日志
 
+## [v1.0.6](https://github.com/iTonyYo/gitin/compare/v1.0.5...v1.0.6) - 2019-07-13
+
+#### 提交
+
+- [[`a5a8347`](https://github.com/iTonyYo/gitin/commit/a5a8347cc741f738da99c9f03035bafe98b29d44)] 文档: :memo: 更新 README.md
 ## [v1.0.5](https://github.com/iTonyYo/gitin/compare/v1.0.4...v1.0.5) - 2019-07-13
 
 #### 提交
 
 - [[`ccf7b2e`](https://github.com/iTonyYo/gitin/commit/ccf7b2e1fdaed8ec483e0b8cd970611fd70de71e)] 功能: :gear: 支持创建建不存在的目标目录并将其初始化为 Git 仓库
+- [[`914bb04`](https://github.com/iTonyYo/gitin/commit/914bb04b0e25186f59ed4857a694ad524f4dea73)] 发版: :bookmark: v1.0.5
 - [[`8b7b1bc`](https://github.com/iTonyYo/gitin/commit/8b7b1bc06d7741f96b1b6923644ce756d1cea6c0)] 文档: :memo: 补充描述 `gitin` 支持的功能
 - [[`b5b0679`](https://github.com/iTonyYo/gitin/commit/b5b06794b6c2da9921a9ce31ca3e68b2cf88557a)] 修复: :bug: 更新日志中没有 `文档: :memo:` 主题的提交记录
 ## [v1.0.4](https://github.com/iTonyYo/gitin/compare/v1.0.3...v1.0.4) - 2019-07-13
