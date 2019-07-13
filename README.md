@@ -12,21 +12,23 @@
 - [贡献指南](#贡献指南)
 - [证书](#证书)
 
-## `gitin(path, force)`
+## `gitin(path, options)`
 
-- `mark` {String} 初始化位置
-- `force` {Boolean} 强制重新初始化, **注意:** 这会删除已有的 `.git` 目录
-- 返回: {Object}
-  - `state` {String} 初始化状态, `already` 表示当前项目已经是 Git 仓库, `success` 表示初始化成功
-  - `message` {String} 初始化结果陈述
+- `mark` {String} 初始化位置；
+- `options` {Object} 选项，
+  - `force` {Boolean} 强制重新初始化，默认：`false`, **注意:** 这会删除已有的 `.git` 目录；
+  - `newDir` {Boolean} 新建不存在的目录，默认：`false`；
+- 返回: {Object}，
+  - `state` {String} 初始化状态, `already` 表示当前项目已经是 Git 仓库, `success` 表示初始化成功；
+  - `message` {String} 初始化结果陈述。
 
 #### 功能
 
-:heavy_check_mark: 持辨别是否已经是 Git 仓库
+:heavy_check_mark: 持辨别是否已经是 Git 仓库；
 
-:heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git
+:heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git；
 
-:heavy_check_mark: 支持创建建不存在的目标目录并将其初始化为 Git 仓库
+:heavy_check_mark: 支持创建建不存在的目标目录并将其初始化为 Git 仓库；
 
 #### 安装
 
@@ -60,13 +62,13 @@ import gitin from '@oopsunome/gitin';
 
 ## 命令行
 
-:heavy_check_mark: 支持从当前以及指定目录初始化 Git 仓库
+:heavy_check_mark: 支持从当前以及指定目录初始化 Git 仓库；
 
-:heavy_check_mark: 持辨别是否已经是 Git 仓库
+:heavy_check_mark: 持辨别是否已经是 Git 仓库；
 
-:heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git 仓库
+:heavy_check_mark: 可强制删除已有的 ".git" 目录，重新初始化 Git 仓库；
 
-:heavy_check_mark: 支持创建建不存在的目标目录并将其初始化为 Git 仓库
+:heavy_check_mark: 支持创建建不存在的目标目录并将其初始化为 Git 仓库；
 
 #### 安装
 
