@@ -1,10 +1,18 @@
 # [`@oopsunome/manual-sort`](https://github.com/iTonyYo/manual-sort) 更新日志
 
+## [v1.1.0](https://github.com/iTonyYo/gitin/compare/v1.0.6...v1.1.0) - 2019-08-22
+
+#### 提交
+
+- [[`29b1343`](https://github.com/iTonyYo/gitin/commit/29b1343db9d8b3bc460c46b2c682d5de4018fee8)] 依赖: :arrow_up: 更新依赖
+- [[`6a848ba`](https://github.com/iTonyYo/gitin/commit/6a848ba5bff27f5d43a0ec65e549d4fbd3b3e7a0)] 文档: :memo: 更新 Git 提交指南
+- [[`2c63048`](https://github.com/iTonyYo/gitin/commit/2c630483d7c974620b0578eaa0f2292a5e7e806a)] 文案: :speech_balloon: 更新命令行 `--help` 提示
 ## [v1.0.6](https://github.com/iTonyYo/gitin/compare/v1.0.5...v1.0.6) - 2019-07-13
 
 #### 提交
 
 - [[`a5a8347`](https://github.com/iTonyYo/gitin/commit/a5a8347cc741f738da99c9f03035bafe98b29d44)] 文档: :memo: 更新 README.md
+- [[`b2fe824`](https://github.com/iTonyYo/gitin/commit/b2fe82451bf9257847f20f2941dd87a4288b969d)] 发版: :bookmark: v1.0.6
 ## [v1.0.5](https://github.com/iTonyYo/gitin/compare/v1.0.4...v1.0.5) - 2019-07-13
 
 #### 提交
