@@ -96,7 +96,7 @@
     "lodash": "^4.17.15",
     "make-dir": "^3.0.0",
     "meow": "^5.0.0",
-    "nodegit": "^0.25.1",
+    "nodegit": "^0.26.3",
     "p-map": "^3.0.0",
     "trash": "^6.0.0",
     "update-notifier": "^3.0.1"
