@@ -99,7 +99,7 @@
     "nodegit": "^0.25.1",
     "p-map": "^3.0.0",
     "trash": "^6.0.0",
-    "update-notifier": "^3.0.1"
+    "update-notifier": "^4.0.0"
   },
   "description": "初始化 Git 项目。",
   "private": false,
