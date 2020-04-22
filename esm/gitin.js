@@ -11,15 +11,15 @@ var _nodegit = require("nodegit");
 
 var _trash = _interopRequireDefault(require("trash"));
 
-var _isBoolean = _interopRequireDefault(require("lodash/isBoolean"));
-
-var _fastDeepEqual = _interopRequireDefault(require("fast-deep-equal"));
-
-var _deepmerge = _interopRequireDefault(require("deepmerge"));
-
 var _makeDir = _interopRequireDefault(require("make-dir"));
 
 var _debug = _interopRequireDefault(require("debug"));
+
+var _merge = _interopRequireDefault(require("./utilities/merge"));
+
+var _isBoolean = _interopRequireDefault(require("./utilities/isBoolean"));
+
+var _isEqual = _interopRequireDefault(require("./utilities/isEqual"));
 
 var _isGitRepo = _interopRequireDefault(require("./utilities/isGitRepo"));
 
@@ -29,12 +29,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const log = (0, _debug.default)('GITIN:gitin');
 
-const gitin = async (path, options) => {
+const gitin = async (path, options = {}) => {
   try {
+    if (!newDir) {
+      throw Error('必须提供有效的初始化位置');
+    }
+
     const {
       force,
       newDir
-    } = (0, _deepmerge.default)({
+    } = (0, _merge.default)({
       force: false,
       newDir: false
     }, options);
@@ -43,12 +47,8 @@ const gitin = async (path, options) => {
       await (0, _makeDir.default)(path);
     }
 
-    if (!(0, _dirExistsSync.default)(path) && !newDir) {
-      throw Error('必须提供有效的初始化位置');
-    }
-
     const isGit = await (0, _isGitRepo.default)(path);
-    const isForce = (0, _isBoolean.default)(force) && (0, _fastDeepEqual.default)(force, true);
+    const isForce = (0, _isBoolean.default)(force) && (0, _isEqual.default)(force, true);
 
     if (isGit && !isForce) {
       log(`\`${path}\` 项目已经是 Git 项目`);

@@ -2,19 +2,23 @@ import { join } from 'path';
 
 import { Repository } from 'nodegit';
 import trash from 'trash';
-import isBoolean from 'lodash/isBoolean';
-import isEqual from 'fast-deep-equal';
-import merge from 'deepmerge';
 import mkdir from 'make-dir';
 import debug from 'debug';
 
+import merge from './utilities/merge';
+import isBoolean from './utilities/isBoolean';
+import isEqual from './utilities/isEqual';
 import isGitRepo from './utilities/isGitRepo';
 import dirExistsSync from './utilities/dirExistsSync';
 
 const log = debug('GITIN:gitin');
 
-const gitin = async (path, options) => {
+const gitin = async (path, options = {}) => {
   try {
+    if (!newDir) {
+      throw Error('必须提供有效的初始化位置');
+    }
+
     const { force, newDir } = merge({
       force: false,
       newDir: false,
@@ -22,10 +26,6 @@ const gitin = async (path, options) => {
 
     if (!dirExistsSync(path) && newDir) {
       await mkdir(path);
-    }
-
-    if (!dirExistsSync(path) && !newDir) {
-      throw Error('必须提供有效的初始化位置');
     }
 
     const isGit = await isGitRepo(path);
