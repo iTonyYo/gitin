@@ -94,12 +94,12 @@
     "fast-deep-equal": "^3.1.1",
     "gradient-string": "^1.2.0",
     "lodash": "^4.17.15",
-    "make-dir": "^3.0.0",
+    "make-dir": "^4.0.0",
     "meow": "^6.0.0",
     "nodegit": "^0.26.3",
     "p-map": "^3.0.0",
-    "trash": "^6.1.1",
-    "update-notifier": "^4.0.0"
+    "trash": "^8.0.0",
+    "update-notifier": "^6.0.0"
   },
   "description": "初始化 Git 项目。",
   "private": false,
